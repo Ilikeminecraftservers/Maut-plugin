@@ -1,0 +1,6 @@
+name: MautPlugin
+main: de.beispiel.maut.MautPlugin
+version: 1.0
+api-version: 1.20
+depend: [Vault, WorldGuard]
+commands: {}
