@@ -1,4 +1,3 @@
-# README.md
 
 # MautPlugin mit WorldGuard (Mehrere Regionen)
 
