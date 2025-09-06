@@ -1,9 +1,12 @@
+// src/main/java/de/beispiel/maut/MautPlugin.java
 package de.beispiel.maut;
 
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.WorldGuard;
-import com.sk89q.worldguard.protection.managers.RegionContainer;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+import com.sk89q.worldguard.protection.regions.RegionContainer;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -120,6 +123,12 @@ public class MautPlugin extends JavaPlugin implements Listener {
         RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
         RegionManager regions = container.get(BukkitAdapter.adapt(loc.getWorld()));
         if (regions == null) return Collections.emptyList();
-        return regions.getApplicableRegionsIDs(BukkitAdapter.asBlockVector(loc));
+
+        ApplicableRegionSet set = regions.getApplicableRegions(BukkitAdapter.asBlockVector(loc));
+        List<String> result = new ArrayList<>();
+        for (ProtectedRegion r : set) {
+            result.add(r.getId());
+        }
+        return result;
     }
-}
+            }
