@@ -1,0 +1,3 @@
+# Standardwerte, nicht zwingend benutzt, da Schilder Region, Preis und Dauer enthalten.
+default-price: 5.0
+default-duration-seconds: 15
